@@ -179,7 +179,7 @@ public class EventListener extends ListenerAdapter {
             String title = messageEmbed.getUrl() == null ? messageEmbed.getTitle() : String.format("[%s](%s)", messageEmbed.getTitle(), messageEmbed.getUrl());
             String description = messageEmbed.getType() == EmbedType.VIDEO ? "" : messageEmbed.getDescription();
             embed.addField(
-                    "__Embed Representation:__",
+                    "__Встроить представление:__",
                     String.format("**%s**\n%s", title, description)
                     , false
             );
@@ -200,15 +200,15 @@ public class EventListener extends ListenerAdapter {
             }
         }
         if (message.getReferencedMessage() == null) {
-            embed.setDescription(String.format("%s\n\n%s", content, String.format("[*jump to message!*](%s)", message.getJumpUrl())));
+            embed.setDescription(String.format("%s\n\n%s", content, String.format("[*перейти к сообщению!*](%s)", message.getJumpUrl())));
         } else {
             Message referencedMessage = message.getReferencedMessage();
-            String referenced = String.format("*replying to %s#%s:*\n> *%s* ([*jump*](%s))",
+            String referenced = String.format("*отвечая на %s#%s:*\n> *%s* ([*jump*](%s))",
                     referencedMessage.getAuthor().getName(),
                     referencedMessage.getAuthor().getDiscriminator(),
                     referencedMessage.getContentDisplay(),
                     referencedMessage.getJumpUrl());
-            embed.setDescription(String.format("%s\n\n%s\n\n%s", referenced, content, String.format("[*jump to message!*](%s)", message.getJumpUrl())));
+            embed.setDescription(String.format("%s\n\n%s\n\n%s", referenced, content, String.format("[*перейти к сообщению!*](%s)", message.getJumpUrl())));
         }
         return new MessageBuilder()
                 .append(String.format("**%d** :star: %s", count, message.getTextChannel().getAsMention()))
